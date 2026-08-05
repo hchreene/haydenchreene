@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Experience — Hayden Chreene</title>
+<title>Experience - Hayden Chreene</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -101,7 +101,7 @@
     padding-left:16px;position:relative;margin-bottom:6px;
   }
   .entry .content li::before{
-    content:"—";position:absolute;left:0;color:var(--muted-2);
+    content:"-";position:absolute;left:0;color:var(--muted-2);
   }
   .tag{
     font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
@@ -151,23 +151,23 @@
     padding-left:16px;position:relative;margin-bottom:6px;
   }
   .cert-card .cert-bullets li::before{
-    content:"—";position:absolute;left:0;color:var(--muted-2);
+    content:"-";position:absolute;left:0;color:var(--muted-2);
   }
 
   footer{
-    border-top:1px solid var(--line);padding:40px 0 40px;
-    display:flex;flex-direction:column;gap:16px;
+    border-top:1px solid var(--line);padding:80px 0 56px;
+    display:flex;flex-direction:column;gap:22px;
   }
   footer .connect-label{
-    font-family:var(--mono);font-size:11.5px;letter-spacing:0.16em;color:var(--muted);text-transform:uppercase;
+    font-family:var(--mono);font-size:13px;letter-spacing:0.2em;color:var(--accent-blue);text-transform:uppercase;font-weight:500;
   }
-  footer .row{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted-2);}
+  footer .row{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12.5px;color:var(--muted-2);margin-top:8px;}
   footer .row a{transition:color .2s ease;}
   footer .row a:hover{color:var(--accent-blue);}
-  footer .contact-line{font-family:var(--display);font-size:26px;font-weight:600;}
-  footer .contact-line a{border-bottom:1px solid var(--line);transition:border-color .2s ease, color .2s ease;}
+  footer .contact-line{font-family:var(--display);font-size:clamp(32px,5.5vw,52px);font-weight:600;letter-spacing:-0.01em;}
+  footer .contact-line a{border-bottom:2px solid var(--line);transition:border-color .25s ease, color .25s ease;}
   footer .contact-line a:hover{color:var(--accent-blue);border-color:var(--accent-blue);}
-  @media (max-width:640px){ footer{text-align:center;} footer .row{justify-content:center;} }
+  @media (max-width:640px){ footer{text-align:center;padding:64px 0 48px;} footer .row{justify-content:center;} }
 </style>
 </head>
 <body>
@@ -183,14 +183,14 @@
   </nav>
 
   <header class="page-head">
-    <div class="eyebrow">Interactive Résumé</div>
+    <div class="eyebrow">Interactive Resume</div>
     <h1>Experience</h1>
     <p class="lede">
-      Technical, creative, and military service — filter by category below,
+      Technical, creative, and military service - filter by category below,
       or scroll for the full timeline.
     </p>
     <a class="btn btn-primary download-btn" href="Hayden_Chreene_Resume.pdf" download>
-      Download Résumé (PDF)
+      Download Resume (PDF)
     </a>
   </header>
 
@@ -206,11 +206,11 @@
   <div class="timeline" id="timeline">
 
     <div class="entry" data-cat="technical">
-      <div class="when">Apr 2026 — Present</div>
+      <div class="when">Apr 2026 - Present</div>
       <div class="content">
         <span class="tag technical">Technical</span>
         <h3>IT Support Specialist</h3>
-        <div class="org">Forth Insurance — Full-Time</div>
+        <div class="org">Forth Insurance - Full-Time</div>
         <p>Front-line IT support and systems administration across identity, endpoint management, and internal ticketing.</p>
         <ul>
           <li>Administer Microsoft 365 and Entra ID identity for a multi-agency organization</li>
@@ -221,32 +221,32 @@
     </div>
 
     <div class="entry" data-cat="other">
-      <div class="when">2024 — Present</div>
+      <div class="when">2024 - Present</div>
       <div class="content">
         <span class="tag other">Education</span>
-        <h3>B.S., Computer Science — Artificial Intelligence Concentration</h3>
+        <h3>B.S., Computer Science - Artificial Intelligence Concentration</h3>
         <div class="org">Louisiana State University of Alexandria (LSUA)</div>
         <p>Coursework focused on computer science fundamentals with a concentration in artificial intelligence.</p>
       </div>
     </div>
 
     <div class="entry" data-cat="military">
-      <div class="when">2023 — Present</div>
+      <div class="when">2023 - Present</div>
       <div class="content">
         <span class="tag military">Military</span>
         <h3>Signal Support Systems Specialist (25H)</h3>
-        <div class="org">Louisiana National Guard — Part-Time</div>
+        <div class="org">Louisiana National Guard - Part-Time</div>
         <p>Install, operate, and maintain signal support systems and terrestrial transmission systems in support of unit communications.</p>
       </div>
     </div>
 
     <div class="entry" data-cat="creative">
-      <div class="when">2022 — Present</div>
+      <div class="when">2022 - Present</div>
       <div class="content">
         <span class="tag creative">Creative</span>
         <h3>AV &amp; Production Technician</h3>
-        <div class="org">First Baptist Ruston — Part-Time</div>
-        <p>Live production for weekly services and events — camera operation, audio mixing, and switching for a multi-camera broadcast environment.</p>
+        <div class="org">First Baptist Ruston - Part-Time</div>
+        <p>Live production for weekly services and events - camera operation, audio mixing, and switching for a multi-camera broadcast environment.</p>
         <ul>
           <li>Operate PTZ camera systems and Blackmagic ATEM switching</li>
           <li>Mix live audio on Allen &amp; Heath Avantis and PreSonus StudioLive platforms</li>
@@ -255,12 +255,12 @@
     </div>
 
     <div class="entry" data-cat="other">
-      <div class="when">2024 — 2026</div>
+      <div class="when">2024 - 2026</div>
       <div class="content">
         <span class="tag other">Founded</span>
         <h3>Owner &amp; Operator</h3>
-        <div class="org">Elite Auto Detailing — Sole Proprietorship</div>
-        <p>Founded and ran an independent detailing business — full ownership of client acquisition, scheduling, service delivery, and business finance.</p>
+        <div class="org">Elite Auto Detailing - Sole Proprietorship</div>
+        <p>Founded and ran an independent detailing business - full ownership of client acquisition, scheduling, service delivery, and business finance.</p>
         <ul>
           <li>Managed operations and reporting through OrbisX and Carfax</li>
           <li>Built a client base from the ground up with no outside investment</li>
@@ -269,11 +269,11 @@
     </div>
 
     <div class="entry" data-cat="creative">
-      <div class="when">Sep 2024 — Mar 2025</div>
+      <div class="when">Sep 2024 - Mar 2025</div>
       <div class="content">
         <span class="tag creative">Creative</span>
         <h3>Athletic Broadcast Assistant</h3>
-        <div class="org">Louisiana Tech University — Part-Time</div>
+        <div class="org">Louisiana Tech University - Part-Time</div>
         <p>Live sports broadcast production for university athletic events, working within a directed multi-role broadcast team.</p>
         <ul>
           <li>Operated cameras, replay, and graphics, and directed during live athletic broadcasts</li>
@@ -285,7 +285,7 @@
     </div>
 
     <div class="entry" data-cat="creative">
-      <div class="when">2024 — 2025</div>
+      <div class="when">2024 - 2025</div>
       <div class="content">
         <span class="tag creative">Creative</span>
         <h3>Freelance Website Builder</h3>
@@ -300,11 +300,11 @@
     </div>
 
     <div class="entry" data-cat="creative">
-      <div class="when">2024 — 2025</div>
+      <div class="when">2024 - 2025</div>
       <div class="content">
         <span class="tag creative">Creative</span>
         <h3>Podcast Production</h3>
-        <div class="org">Lumen Productions — Part-Time</div>
+        <div class="org">Lumen Productions - Part-Time</div>
         <p>Helped launch and produce a new podcast.</p>
         <ul>
           <li>Helped start up and produce a podcast called RawTalk</li>
@@ -313,11 +313,11 @@
     </div>
 
     <div class="entry" data-cat="creative">
-      <div class="when">2020 — 2024</div>
+      <div class="when">2020 - 2024</div>
       <div class="content">
         <span class="tag creative">Creative</span>
         <h3>Creative Media</h3>
-        <div class="org">Choudrant High School — Volunteer</div>
+        <div class="org">Choudrant High School - Volunteer</div>
         <p>Handled all creative media for the school and its athletic teams.</p>
         <ul>
           <li>Created gameday graphics, schedules, and advertising material</li>
@@ -340,18 +340,18 @@
       </div>
       <div class="cert-card">
         <div class="cert-name">Microsoft Office Specialist: PowerPoint 2016</div>
-        <div class="cert-meta">Certiport — A Pearson VUE Business · Issued Dec 2020</div>
+        <div class="cert-meta">Certiport - A Pearson VUE Business · Issued Dec 2020</div>
       </div>
       <div class="cert-card">
         <div class="cert-name">Microsoft Office Specialist: Word Associate (Word &amp; Word 2019)</div>
-        <div class="cert-meta">Certiport — A Pearson VUE Business · Issued Jan 2021</div>
+        <div class="cert-meta">Certiport - A Pearson VUE Business · Issued Jan 2021</div>
       </div>
     </div>
   </section>
 
   <footer id="contact">
     <div class="connect-label">Connect</div>
-    <div class="contact-line">Let's talk — <a href="mailto:chreenehayden@gmail.com">chreenehayden@gmail.com</a></div>
+    <div class="contact-line">Let's talk - <a href="mailto:chreenehayden@gmail.com">chreenehayden@gmail.com</a></div>
     <div class="row">
       <span>© 2026 Hayden Chreene</span>
       <span><a href="https://haydenchreene.com">HaydenChreene.com</a></span>
