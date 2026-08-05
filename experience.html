@@ -44,6 +44,17 @@
   .lede{margin-top:22px;max-width:600px;font-size:16.5px;line-height:1.65;color:var(--muted);opacity:0;animation:fadeUp .9s ease forwards;animation-delay:.2s;}
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px);} to{opacity:1;transform:translateY(0);}}
 
+  .btn{
+    font-family:var(--mono);font-size:13px;letter-spacing:0.03em;
+    padding:14px 22px;border-radius:2px;border:1px solid var(--line);
+    transition:all .25s ease;display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-primary{background:var(--text);color:var(--bg);border-color:var(--text);}
+  .btn-primary:hover{background:var(--accent-blue);border-color:var(--accent-blue);color:#08090b;transform:translateY(-1px);}
+  .download-btn{
+    margin-top:32px;opacity:0;animation:fadeUp .9s ease forwards;animation-delay:.3s;
+  }
+
   /* filters */
   .filters{
     display:flex;gap:10px;flex-wrap:wrap;
@@ -145,13 +156,18 @@
 
   footer{
     border-top:1px solid var(--line);padding:40px 0 40px;
-    display:flex;flex-direction:column;gap:18px;
+    display:flex;flex-direction:column;gap:16px;
   }
-  footer .row{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted-2);}
+  footer .connect-label{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:0.16em;color:var(--muted);text-transform:uppercase;
+  }
+  footer .row{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted-2);}
+  footer .row a{transition:color .2s ease;}
+  footer .row a:hover{color:var(--accent-blue);}
   footer .contact-line{font-family:var(--display);font-size:26px;font-weight:600;}
   footer .contact-line a{border-bottom:1px solid var(--line);transition:border-color .2s ease, color .2s ease;}
   footer .contact-line a:hover{color:var(--accent-blue);border-color:var(--accent-blue);}
-  @media (max-width:640px){ footer .row{flex-direction:column;gap:10px;text-align:center;} }
+  @media (max-width:640px){ footer{text-align:center;} footer .row{justify-content:center;} }
 </style>
 </head>
 <body>
@@ -173,6 +189,9 @@
       Technical, creative, and military service — filter by category below,
       or scroll for the full timeline.
     </p>
+    <a class="btn btn-primary download-btn" href="Hayden_Chreene_Resume.pdf" download>
+      Download Résumé (PDF)
+    </a>
   </header>
 
   <div class="filters" id="filters">
@@ -187,11 +206,11 @@
   <div class="timeline" id="timeline">
 
     <div class="entry" data-cat="technical">
-      <div class="when">2024 — Present</div>
+      <div class="when">Apr 2026 — Present</div>
       <div class="content">
         <span class="tag technical">Technical</span>
         <h3>IT Support Specialist</h3>
-        <div class="org">Forth Insurance</div>
+        <div class="org">Forth Insurance — Full-Time</div>
         <p>Front-line IT support and systems administration across identity, endpoint management, and internal ticketing.</p>
         <ul>
           <li>Administer Microsoft 365 and Entra ID identity for a multi-agency organization</li>
@@ -216,7 +235,7 @@
       <div class="content">
         <span class="tag military">Military</span>
         <h3>Signal Support Systems Specialist (25H)</h3>
-        <div class="org">Louisiana National Guard</div>
+        <div class="org">Louisiana National Guard — Part-Time</div>
         <p>Install, operate, and maintain signal support systems and terrestrial transmission systems in support of unit communications.</p>
       </div>
     </div>
@@ -231,19 +250,6 @@
         <ul>
           <li>Operate PTZ camera systems and Blackmagic ATEM switching</li>
           <li>Mix live audio on Allen &amp; Heath Avantis and PreSonus StudioLive platforms</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="entry" data-cat="creative">
-      <div class="when">Volunteer</div>
-      <div class="content">
-        <span class="tag creative">Creative</span>
-        <h3>Creative Media</h3>
-        <div class="org">Choudrant High School — Volunteer</div>
-        <p>Handled all creative media for the school and its athletic teams.</p>
-        <ul>
-          <li>Created gameday graphics, schedules, and advertising material</li>
         </ul>
       </div>
     </div>
@@ -306,6 +312,19 @@
       </div>
     </div>
 
+    <div class="entry" data-cat="creative">
+      <div class="when">2020 — 2024</div>
+      <div class="content">
+        <span class="tag creative">Creative</span>
+        <h3>Creative Media</h3>
+        <div class="org">Choudrant High School — Volunteer</div>
+        <p>Handled all creative media for the school and its athletic teams.</p>
+        <ul>
+          <li>Created gameday graphics, schedules, and advertising material</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
   <section class="certs" id="certifications">
@@ -331,9 +350,11 @@
   </section>
 
   <footer id="contact">
-    <div class="contact-line">Let's talk — <a href="mailto:hello@haydenchreene.com">hello@haydenchreene.com</a></div>
+    <div class="connect-label">Connect</div>
+    <div class="contact-line">Let's talk — <a href="mailto:chreenehayden@gmail.com">chreenehayden@gmail.com</a></div>
     <div class="row">
       <span>© 2026 Hayden Chreene</span>
+      <span><a href="https://haydenchreene.com">HaydenChreene.com</a></span>
       <span>Ruston, Louisiana</span>
     </div>
   </footer>
