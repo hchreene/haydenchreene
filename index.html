@@ -1,1 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hayden Chreene — IT & Cybersecurity / Creative Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0D10;
+    --surface:#12151A;
+    --surface-2:#171B21;
+    --text:#ECEEF1;
+    --muted:#8A93A3;
+    --muted-2:#5C6472;
+    --accent-blue:#5B8DEF;
+    --accent-amber:#F0A868;
+    --line:rgba(255,255,255,0.09);
+    --display:'Space Grotesk',sans-serif;
+    --body:'IBM Plex Sans',sans-serif;
+    --mono:'IBM Plex Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
 
+  /* subtle grain / vignette */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background:radial-gradient(ellipse 80% 60% at 50% -10%, rgba(91,141,239,0.10), transparent 60%),
+               radial-gradient(ellipse 60% 40% at 90% 100%, rgba(240,168,104,0.06), transparent 60%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+    position:relative;
+    z-index:1;
+  }
+
+  /* NAV */
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:32px 0;
+  }
+  .mark{
+    font-family:var(--mono);
+    font-size:14px;
+    letter-spacing:0.02em;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .mark .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent-blue);
+    box-shadow:0 0 10px rgba(91,141,239,0.7);
+  }
+  .navlinks{
+    display:flex;
+    gap:40px;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--muted);
+  }
+  .navlinks a{
+    position:relative;
+    padding:4px 0;
+    transition:color .25s ease;
+  }
+  .navlinks a:hover{color:var(--text);}
+  .navlinks a::after{
+    content:"";
+    position:absolute;left:0;bottom:0;
+    width:0;height:1px;
+    background:var(--accent-blue);
+    transition:width .3s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  @media (max-width:640px){ .navlinks{display:none;} }
+
+  /* HERO */
+  .hero{
+    padding:96px 0 64px;
+    min-height:78vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    color:var(--muted);
+    text-transform:uppercase;
+    margin-bottom:28px;
+    opacity:0;
+    animation:fadeUp .8s ease forwards;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .eyebrow span.seg{color:var(--text);}
+  .eyebrow .sep{color:var(--accent-blue);}
+
+  h1{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(52px,8vw,104px);
+    line-height:0.98;
+    letter-spacing:-0.02em;
+    opacity:0;
+    animation:fadeUp .9s ease forwards;
+    animation-delay:.12s;
+  }
+  h1 .last{
+    background:linear-gradient(100deg,var(--accent-blue) 10%, var(--accent-amber) 90%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .lede{
+    margin-top:28px;
+    max-width:560px;
+    font-size:17px;
+    line-height:1.65;
+    color:var(--muted);
+    opacity:0;
+    animation:fadeUp .9s ease forwards;
+    animation-delay:.24s;
+  }
+  .lede strong{color:var(--text);font-weight:500;}
+
+  .cta-row{
+    margin-top:44px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    opacity:0;
+    animation:fadeUp .9s ease forwards;
+    animation-delay:.36s;
+  }
+  .btn{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.03em;
+    padding:14px 22px;
+    border-radius:2px;
+    border:1px solid var(--line);
+    transition:all .25s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .btn-primary{
+    background:var(--text);
+    color:var(--bg);
+    border-color:var(--text);
+  }
+  .btn-primary:hover{
+    background:var(--accent-blue);
+    border-color:var(--accent-blue);
+    color:#08090b;
+    transform:translateY(-1px);
+  }
+  .btn-ghost{
+    color:var(--text);
+    background:transparent;
+  }
+  .btn-ghost:hover{
+    border-color:var(--accent-amber);
+    color:var(--accent-amber);
+    transform:translateY(-1px);
+  }
+  .btn-ghost.alt:hover{
+    border-color:var(--accent-blue);
+    color:var(--accent-blue);
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* SIGNAL DIVIDER */
+  .signal{
+    width:100%;
+    height:88px;
+    display:block;
+    margin:8px 0 4px;
+  }
+  .signal path{
+    fill:none;
+    stroke:url(#signalGrad);
+    stroke-width:1.4;
+    stroke-linecap:round;
+  }
+  .signal-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.14em;
+    color:var(--muted-2);
+    text-transform:uppercase;
+    display:flex;
+    justify-content:space-between;
+    padding-bottom:64px;
+    border-bottom:1px solid var(--line);
+  }
+
+  /* AREAS */
+  .areas{
+    padding:64px 0 80px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width:860px){ .areas{grid-template-columns:1fr;} }
+  .card{
+    background:var(--bg);
+    padding:38px 34px;
+    transition:background .3s ease;
+    reveal:true;
+    opacity:0;
+    transform:translateY(18px);
+  }
+  .card.in{
+    animation:fadeUp .7s ease forwards;
+  }
+  .card:hover{background:var(--surface);}
+  .card .tag{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:2px;
+    display:inline-block;
+    margin-bottom:22px;
+    color:var(--muted);
+  }
+  .card:nth-child(1) .tag{color:var(--accent-blue); border-color:rgba(91,141,239,0.35);}
+  .card:nth-child(2) .tag{color:var(--accent-amber); border-color:rgba(240,168,104,0.35);}
+  .card:nth-child(3) .tag{color:var(--muted); border-color:var(--line);}
+  .card h3{
+    font-family:var(--display);
+    font-size:23px;
+    font-weight:600;
+    margin-bottom:12px;
+    letter-spacing:-0.01em;
+  }
+  .card p{
+    font-size:14.5px;
+    line-height:1.65;
+    color:var(--muted);
+  }
+
+  /* CREDENTIALS STRIP */
+  .creds{
+    padding:30px 0 60px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 36px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--muted-2);
+    align-items:center;
+  }
+  .creds .item{display:flex;align-items:center;gap:9px;}
+  .creds .item .dash{width:14px;height:1px;background:var(--line);}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:28px 0 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--muted-2);
+  }
+  @media (max-width:640px){
+    footer{flex-direction:column;gap:10px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="mark"><span class="dot"></span>HAYDEN CHREENE</div>
+    <div class="navlinks">
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="eyebrow">
+      <span class="seg">IT &amp; SUPPORT</span><span class="sep">/</span>
+      <span class="seg">CYBERSECURITY</span><span class="sep">/</span>
+      <span class="seg">CREATIVE MEDIA</span>
+    </div>
+    <h1>Hayden<br><span class="last">Chreene</span></h1>
+    <p class="lede">
+      I keep systems running and signal clean — <strong>IT support and networking</strong> by trade,
+      <strong>cybersecurity</strong> by pursuit, and <strong>live production</strong> by craft.
+      Currently based in Ruston, Louisiana.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">View Résumé</a>
+      <a class="btn btn-ghost" href="#work">View Projects</a>
+      <a class="btn btn-ghost alt" href="#contact">Contact Me</a>
+    </div>
+  </section>
+
+  <svg class="signal" viewBox="0 0 1180 88" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="signalGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#5B8DEF"/>
+        <stop offset="100%" stop-color="#F0A868"/>
+      </linearGradient>
+    </defs>
+    <path id="signalPath" d=""/>
+  </svg>
+  <div class="signal-label">
+    <span>DATA</span>
+    <span>SIGNAL</span>
+    <span>AUDIO / VIDEO</span>
+  </div>
+
+  <section class="areas" id="work">
+    <div class="card">
+      <span class="tag">01 · Technical</span>
+      <h3>IT &amp; Security</h3>
+      <p>Infrastructure support, identity &amp; access management, and network administration — plus an active push toward Security+ and formal cybersecurity credentials.</p>
+    </div>
+    <div class="card">
+      <span class="tag">02 · Creative</span>
+      <h3>Media Production</h3>
+      <p>Live broadcast and AV production — camera systems, audio consoles, and switching for weekly live production environments.</p>
+    </div>
+    <div class="card">
+      <span class="tag">03 · Founded</span>
+      <h3>Entrepreneurial</h3>
+      <p>Built and operated an independent service business end-to-end — client acquisition, operations, and small-business finance, sole proprietor.</p>
+    </div>
+  </section>
+
+  <div class="creds">
+    <div class="item"><span class="dash"></span>25H — Signal Support Systems Specialist, Louisiana National Guard</div>
+    <div class="item"><span class="dash"></span>Security+ (in progress)</div>
+    <div class="item"><span class="dash"></span>Louisiana Tech University</div>
+  </div>
+
+  <footer id="contact">
+    <span>© 2026 Hayden Chreene</span>
+    <span>Ruston, Louisiana</span>
+  </footer>
+</div>
+
+<script>
+  // reveal cards on scroll
+  const cards = document.querySelectorAll('.card');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        setTimeout(()=>e.target.classList.add('in'), i*90);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.2});
+  cards.forEach(c=>io.observe(c));
+
+  // signal morph: square wave <-> sine wave, blended continuously
+  const path = document.getElementById('signalPath');
+  const W = 1180, H = 88, MID = 44, AMP = 26;
+  const POINTS = 120;
+  const FREQ = 4; // cycles across width
+
+  function square(x){
+    const t = (x/W)*FREQ*2*Math.PI;
+    return Math.sign(Math.sin(t)) || 1;
+  }
+  function sine(x){
+    const t = (x/W)*FREQ*2*Math.PI;
+    return Math.sin(t);
+  }
+
+  let start = performance.now();
+  function frame(now){
+    const elapsed = (now-start)/1000;
+    const t = (Math.sin(elapsed*0.35)+1)/2; // 0 = square, 1 = sine, breathing
+    let d = '';
+    for(let i=0;i<=POINTS;i++){
+      const x = (i/POINTS)*W;
+      const sq = square(x);
+      const sn = sine(x);
+      const y = MID - (sq*(1-t) + sn*t)*AMP;
+      d += (i===0?'M':'L') + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+    }
+    path.setAttribute('d', d);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // respect reduced motion
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    cards.forEach(c=>c.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
