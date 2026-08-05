@@ -56,6 +56,7 @@
     padding:9px 16px;border:1px solid var(--line);border-radius:2px;
     color:var(--muted);background:transparent;cursor:pointer;
     transition:all .2s ease;
+    display:inline-block;
   }
   .filter-btn:hover{color:var(--text);border-color:var(--muted-2);}
   .filter-btn.active{color:var(--bg);background:var(--text);border-color:var(--text);}
@@ -105,6 +106,43 @@
     .entry{grid-template-columns:1fr;gap:10px;}
   }
 
+  .certs{padding:16px 0 56px;}
+  .certs h2{
+    font-family:var(--display);font-size:28px;font-weight:600;letter-spacing:-0.01em;
+    margin-bottom:24px;
+  }
+  .certs-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);
+  }
+  .cert-placeholder{
+    background:var(--bg);padding:28px 24px;
+    font-family:var(--mono);font-size:13px;color:var(--muted-2);
+    grid-column:1/-1;
+  }
+  .cert-card{
+    background:var(--bg);padding:24px 22px;
+    transition:background .25s ease;
+  }
+  .cert-card:hover{background:var(--surface);}
+  .cert-card .cert-name{
+    font-family:var(--display);font-size:16.5px;font-weight:600;margin-bottom:6px;
+  }
+  .cert-card .cert-meta{
+    font-family:var(--mono);font-size:11.5px;color:var(--muted-2);
+  }
+  .cert-card .cert-bullets{
+    margin-top:12px;padding-left:0;list-style:none;
+  }
+  .cert-card .cert-bullets li{
+    font-size:13px;line-height:1.6;color:var(--muted);
+    padding-left:16px;position:relative;margin-bottom:6px;
+  }
+  .cert-card .cert-bullets li::before{
+    content:"—";position:absolute;left:0;color:var(--muted-2);
+  }
+
   footer{
     border-top:1px solid var(--line);padding:40px 0 40px;
     display:flex;flex-direction:column;gap:18px;
@@ -143,6 +181,7 @@
     <button class="filter-btn" data-filter="creative">Creative</button>
     <button class="filter-btn" data-filter="military">Military</button>
     <button class="filter-btn" data-filter="other">Education &amp; Founded</button>
+    <button class="filter-btn" id="certsJumpBtn" type="button">Certifications</button>
   </div>
 
   <div class="timeline" id="timeline">
@@ -162,6 +201,16 @@
       </div>
     </div>
 
+    <div class="entry" data-cat="other">
+      <div class="when">2024 — Present</div>
+      <div class="content">
+        <span class="tag other">Education</span>
+        <h3>B.S., Computer Science — Artificial Intelligence Concentration</h3>
+        <div class="org">Louisiana State University of Alexandria (LSUA)</div>
+        <p>Coursework focused on computer science fundamentals with a concentration in artificial intelligence.</p>
+      </div>
+    </div>
+
     <div class="entry" data-cat="military">
       <div class="when">2023 — Present</div>
       <div class="content">
@@ -177,7 +226,7 @@
       <div class="content">
         <span class="tag creative">Creative</span>
         <h3>AV &amp; Production Technician</h3>
-        <div class="org">First Baptist Ruston</div>
+        <div class="org">First Baptist Ruston — Part-Time</div>
         <p>Live production for weekly services and events — camera operation, audio mixing, and switching for a multi-camera broadcast environment.</p>
         <ul>
           <li>Operate PTZ camera systems and Blackmagic ATEM switching</li>
@@ -186,8 +235,21 @@
       </div>
     </div>
 
+    <div class="entry" data-cat="creative">
+      <div class="when">Volunteer</div>
+      <div class="content">
+        <span class="tag creative">Creative</span>
+        <h3>Creative Media</h3>
+        <div class="org">Choudrant High School — Volunteer</div>
+        <p>Handled all creative media for the school and its athletic teams.</p>
+        <ul>
+          <li>Created gameday graphics, schedules, and advertising material</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="entry" data-cat="other">
-      <div class="when">2022 — 2025</div>
+      <div class="when">2024 — 2026</div>
       <div class="content">
         <span class="tag other">Founded</span>
         <h3>Owner &amp; Operator</h3>
@@ -200,17 +262,73 @@
       </div>
     </div>
 
-    <div class="entry" data-cat="other">
-      <div class="when">2023 — Present</div>
+    <div class="entry" data-cat="creative">
+      <div class="when">Sep 2024 — Mar 2025</div>
       <div class="content">
-        <span class="tag other">Education</span>
-        <h3>B.S., Information Technology (in progress)</h3>
-        <div class="org">Louisiana Tech University</div>
-        <p>Coursework focused on networking, systems administration, and the foundations of cybersecurity.</p>
+        <span class="tag creative">Creative</span>
+        <h3>Athletic Broadcast Assistant</h3>
+        <div class="org">Louisiana Tech University — Part-Time</div>
+        <p>Live sports broadcast production for university athletic events, working within a directed multi-role broadcast team.</p>
+        <ul>
+          <li>Operated cameras, replay, and graphics, and directed during live athletic broadcasts</li>
+          <li>Produced live broadcasts airing on ESPN+</li>
+          <li>Collaborated with the director to execute shots and angles</li>
+          <li>Assisted in setting up equipment and ensuring technical aspects ran smoothly</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry" data-cat="creative">
+      <div class="when">2024 — 2025</div>
+      <div class="content">
+        <span class="tag creative">Creative</span>
+        <h3>Freelance Website Builder</h3>
+        <div class="org">Independent / Freelance</div>
+        <p>Designed and built custom websites for churches, small businesses, and personal ventures.</p>
+        <ul>
+          <li>Built a website concept for Cornerstone Church</li>
+          <li>Designed and developed the site for Faith and Fire Design Co.</li>
+          <li>Created a website for Elite Auto Detailing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry" data-cat="creative">
+      <div class="when">2024 — 2025</div>
+      <div class="content">
+        <span class="tag creative">Creative</span>
+        <h3>Podcast Production</h3>
+        <div class="org">Lumen Productions — Part-Time</div>
+        <p>Helped launch and produce a new podcast.</p>
+        <ul>
+          <li>Helped start up and produce a podcast called RawTalk</li>
+        </ul>
       </div>
     </div>
 
   </div>
+
+  <section class="certs" id="certifications">
+    <h2>Certifications</h2>
+    <div class="certs-grid" id="certsGrid">
+      <div class="cert-card">
+        <div class="cert-name">CompTIA Security+</div>
+        <div class="cert-meta">CompTIA · Issued July 2026</div>
+        <ul class="cert-bullets">
+          <li>Validated core skills in network security, threats and vulnerabilities, and risk management</li>
+          <li>Covers identity, access management, and security operations aligned with DoD 8140 requirements</li>
+        </ul>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Microsoft Office Specialist: PowerPoint 2016</div>
+        <div class="cert-meta">Certiport — A Pearson VUE Business · Issued Dec 2020</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Microsoft Office Specialist: Word Associate (Word &amp; Word 2019)</div>
+        <div class="cert-meta">Certiport — A Pearson VUE Business · Issued Jan 2021</div>
+      </div>
+    </div>
+  </section>
 
   <footer id="contact">
     <div class="contact-line">Let's talk — <a href="mailto:hello@haydenchreene.com">hello@haydenchreene.com</a></div>
@@ -222,8 +340,12 @@
 </div>
 
 <script>
-  const buttons = document.querySelectorAll('.filter-btn');
+  const buttons = document.querySelectorAll('.filter-btn[data-filter]');
   const entries = document.querySelectorAll('.entry');
+
+  document.getElementById('certsJumpBtn').addEventListener('click', ()=>{
+    document.getElementById('certifications').scrollIntoView({behavior:'smooth', block:'start'});
+  });
   buttons.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       buttons.forEach(b=>b.classList.remove('active'));
