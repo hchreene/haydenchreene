@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — Hayden Chreene</title>
+<title>Projects - Hayden Chreene</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -68,6 +68,17 @@
     margin-bottom:80px;
   }
   @media (max-width:760px){ .grid{grid-template-columns:1fr;} }
+  .empty-state{
+    display:none;
+    grid-column:1/-1;
+    background:var(--bg);
+    padding:48px 28px;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--muted-2);
+  }
+  .empty-state.show{display:block;}
 
   .proj{
     background:var(--bg);
@@ -84,6 +95,7 @@
   .thumb.g2{background:linear-gradient(135deg, #3a2a17 0%, #63421e 45%, #F0A868 130%);}
   .thumb.g3{background:linear-gradient(135deg, #17233d 0%, #3a2a17 60%, #8A93A3 130%);}
   .thumb.g4{background:linear-gradient(135deg, #1b1e24 0%, #2a2f38 60%, #5B8DEF 140%);}
+  .thumb.photo-thumb{background-size:cover;background-position:center;}
   .thumb::after{
     content:"";position:absolute;inset:0;
     background:linear-gradient(0deg, rgba(0,0,0,0.35), transparent 40%);
@@ -103,6 +115,41 @@
     border-color:transparent transparent transparent #fff;
     margin-left:3px;
   }
+  .thumb[data-video]{cursor:pointer;}
+  .thumb:not([data-video]){cursor:default;}
+  .thumb:not([data-video]) .play{opacity:0.55;}
+
+  .video-modal{
+    display:none;
+    position:fixed;inset:0;
+    background:rgba(5,6,8,0.88);
+    z-index:100;
+    align-items:center;justify-content:center;
+    padding:32px;
+  }
+  .video-modal.open{display:flex;}
+  .video-modal-inner{
+    width:100%;max-width:960px;
+    position:relative;
+  }
+  .video-modal-frame{
+    position:relative;width:100%;
+    aspect-ratio:16/9;
+    background:#000;
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .video-modal-frame iframe{
+    position:absolute;inset:0;width:100%;height:100%;border:0;
+  }
+  .video-modal-close{
+    position:absolute;top:-44px;right:0;
+    background:transparent;border:none;
+    color:var(--text);font-size:30px;line-height:1;
+    cursor:pointer;font-family:var(--mono);
+    transition:color .2s ease;
+  }
+  .video-modal-close:hover{color:var(--accent-blue);}
   .proj-body{padding:26px 28px 32px;}
   .tag{
     font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
@@ -111,25 +158,25 @@
   }
   .tag.live{color:var(--accent-amber);border-color:rgba(240,168,104,0.35);}
   .tag.promo{color:var(--accent-amber);border-color:rgba(240,168,104,0.35);}
-  .tag.technical{color:var(--accent-blue);border-color:rgba(91,141,239,0.35);}
+  .tag.video{color:var(--accent-blue);border-color:rgba(91,141,239,0.35);}
   .proj-body h3{font-family:var(--display);font-size:21px;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;}
   .proj-body p{font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:14px;}
   .meta{font-family:var(--mono);font-size:11.5px;color:var(--muted-2);}
 
   footer{
-    border-top:1px solid var(--line);padding:40px 0 40px;
-    display:flex;flex-direction:column;gap:16px;
+    border-top:1px solid var(--line);padding:80px 0 56px;
+    display:flex;flex-direction:column;gap:22px;
   }
   footer .connect-label{
-    font-family:var(--mono);font-size:11.5px;letter-spacing:0.16em;color:var(--muted);text-transform:uppercase;
+    font-family:var(--mono);font-size:13px;letter-spacing:0.2em;color:var(--accent-blue);text-transform:uppercase;font-weight:500;
   }
-  footer .row{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted-2);}
+  footer .row{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12.5px;color:var(--muted-2);margin-top:8px;}
   footer .row a{transition:color .2s ease;}
   footer .row a:hover{color:var(--accent-blue);}
-  footer .contact-line{font-family:var(--display);font-size:26px;font-weight:600;}
-  footer .contact-line a{border-bottom:1px solid var(--line);transition:border-color .2s ease, color .2s ease;}
+  footer .contact-line{font-family:var(--display);font-size:clamp(32px,5.5vw,52px);font-weight:600;letter-spacing:-0.01em;}
+  footer .contact-line a{border-bottom:2px solid var(--line);transition:border-color .25s ease, color .25s ease;}
   footer .contact-line a:hover{color:var(--accent-blue);border-color:var(--accent-blue);}
-  @media (max-width:640px){ footer{text-align:center;} footer .row{justify-content:center;} }
+  @media (max-width:640px){ footer{text-align:center;padding:64px 0 48px;} footer .row{justify-content:center;} }
 </style>
 </head>
 <body>
@@ -148,7 +195,7 @@
     <div class="eyebrow">Portfolio</div>
     <h1>Projects</h1>
     <p class="lede">
-      Live production, promotional content, and technical builds —
+      Live production, promotional content, and technical builds -
       a mix of what runs on screen and what runs behind it.
     </p>
   </header>
@@ -157,23 +204,23 @@
     <button class="filter-btn active" data-filter="all">All</button>
     <button class="filter-btn" data-filter="live">Live Production</button>
     <button class="filter-btn" data-filter="promo">Promotional</button>
-    <button class="filter-btn" data-filter="technical">Technical Builds</button>
+    <button class="filter-btn" data-filter="video">Video Production</button>
   </div>
 
   <div class="grid" id="grid">
 
     <div class="proj" data-cat="live">
-      <div class="thumb g1"><div class="play"></div></div>
+      <div class="thumb g1" data-video="REPLACE_WITH_VIDEO_ID_1"><div class="play"></div></div>
       <div class="proj-body">
         <span class="tag live">Live Production</span>
         <h3>Sunday Multicam Broadcast</h3>
-        <p>Weekly live production for church services — camera direction, audio mix, and program switching for a multi-source broadcast.</p>
+        <p>Weekly live production for church services - camera direction, audio mix, and program switching for a multi-source broadcast.</p>
         <div class="meta">PTZ Cameras · Blackmagic ATEM · Avantis</div>
       </div>
     </div>
 
     <div class="proj" data-cat="promo">
-      <div class="thumb g2"><div class="play"></div></div>
+      <div class="thumb g2" data-video="REPLACE_WITH_VIDEO_ID_2"><div class="play"></div></div>
       <div class="proj-body">
         <span class="tag promo">Promotional</span>
         <h3>Before / After Detail Reel</h3>
@@ -183,7 +230,7 @@
     </div>
 
     <div class="proj" data-cat="live">
-      <div class="thumb g3"><div class="play"></div></div>
+      <div class="thumb g3" data-video="REPLACE_WITH_VIDEO_ID_3"><div class="play"></div></div>
       <div class="proj-body">
         <span class="tag live">Live Production</span>
         <h3>Special Event Broadcast</h3>
@@ -192,21 +239,23 @@
       </div>
     </div>
 
-    <div class="proj" data-cat="technical">
-      <div class="thumb g4"><div class="play"></div></div>
+    <div class="proj" data-cat="video">
+      <div class="thumb photo-thumb" style="background-image:url('night_to_shine_thumbnail.jpg')" data-video="m5h6ricvCHQ"><div class="play"></div></div>
       <div class="proj-body">
-        <span class="tag technical">Technical Build</span>
-        <h3>Facility Camera System Design</h3>
-        <p>Designed and specified a 12-camera security system, including recorder sizing and surveillance-grade storage.</p>
-        <div class="meta">UniFi Protect · UNVR · System Design</div>
+        <span class="tag video">Video Production</span>
+        <h3>2026 Night To Shine Recap</h3>
+        <p>Recap video capturing the highlights and atmosphere of the 2026 Night to Shine event.</p>
+        <div class="meta">Filming &amp; Editing</div>
       </div>
     </div>
+
+    <div class="empty-state" id="emptyState">More work coming soon in this category.</div>
 
   </div>
 
   <footer id="contact">
     <div class="connect-label">Connect</div>
-    <div class="contact-line">Let's talk — <a href="mailto:chreenehayden@gmail.com">chreenehayden@gmail.com</a></div>
+    <div class="contact-line">Let's talk - <a href="mailto:chreenehayden@gmail.com">chreenehayden@gmail.com</a></div>
     <div class="row">
       <span>© 2026 Hayden Chreene</span>
       <span><a href="https://haydenchreene.com">HaydenChreene.com</a></span>
@@ -215,23 +264,57 @@
   </footer>
 </div>
 
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="videoModalClose" aria-label="Close video">&times;</button>
+    <div class="video-modal-frame" id="videoModalFrame"></div>
+  </div>
+</div>
+
 <script>
   const buttons = document.querySelectorAll('.filter-btn');
   const projs = document.querySelectorAll('.proj');
+  const emptyState = document.getElementById('emptyState');
   buttons.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       buttons.forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
       const f = btn.dataset.filter;
+      let visibleCount = 0;
       projs.forEach(p=>{
         if(f==='all' || p.dataset.cat===f){
           p.classList.remove('hidden');
+          visibleCount++;
         } else {
           p.classList.add('hidden');
         }
       });
+      emptyState.classList.toggle('show', visibleCount === 0);
     });
   });
+
+  // video modal
+  const modal = document.getElementById('videoModal');
+  const modalFrame = document.getElementById('videoModalFrame');
+  const modalClose = document.getElementById('videoModalClose');
+
+  document.querySelectorAll('.thumb[data-video]').forEach(thumb=>{
+    thumb.addEventListener('click', ()=>{
+      const id = thumb.dataset.video;
+      if(!id || id.startsWith('REPLACE_')) return; // no real video wired up yet
+      modalFrame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0"
+        title="Project video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+      modal.classList.add('open');
+    });
+  });
+
+  function closeModal(){
+    modal.classList.remove('open');
+    modalFrame.innerHTML = ''; // stop playback
+  }
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
 </script>
 
 </body>
